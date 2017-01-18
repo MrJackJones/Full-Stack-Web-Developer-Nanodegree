@@ -34,13 +34,9 @@ Installed and configured all required software to turn a baseline Ubuntu Amazon 
 5) Allow user to login through ssh as grader with the same private key that can be used to login as root:
 
    su grader
-   
    mkdir ~/.ssh
-   
    chmod 777 ~/.ssh
-   
    sudo cp /root/.ssh/authorized_keys ~/.ssh/
-   
    sudo chown grader:grader ~/.ssh/authorized_keys
 
 
