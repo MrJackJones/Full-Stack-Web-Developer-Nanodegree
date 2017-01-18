@@ -43,9 +43,9 @@ Installed and configured all required software to turn a baseline Ubuntu Amazon 
 
 6) Configure the Uncomplicated Firewall (UFW) to only allow incoming connections for SSH (port 2200), HTTP (port 80), and NTP (port 123)
 
-#Allow incoming TCP packets on port 2200 (SSH) $ sudo ufw allow 2200/tcp
-#Allow incoming TCP packets on port 80 (HTTP)
-#Allow incoming UDP packets on port 123 (NTP)
+    Allow incoming TCP packets on port 2200 (SSH) $ sudo ufw allow 2200/tcp
+    Allow incoming TCP packets on port 80 (HTTP)
+    Allow incoming UDP packets on port 123 (NTP)
 
     sudo ufw enable
     sudo ufw allow 80/tcp
@@ -55,7 +55,7 @@ Installed and configured all required software to turn a baseline Ubuntu Amazon 
 
 7) Configure the local timezone to UTC
 
-#Type the below command and select the required time zone.
+    Type the below command and select the required time zone.
 
     sudo dpkg-reconfigure tzdata
 
@@ -65,21 +65,21 @@ Installed and configured all required software to turn a baseline Ubuntu Amazon 
 
 9) Install and configure Apache to serve a Python mod_wsgi application
 
-Install Apache
+    Install Apache
 
     sudo apt-get install apache2
 
-Install mod_wsgi
+    Install mod_wsgi
 
     sudo apt-get install python-setuptools libapache2-mod-wsgi
 
-Restart Apache
+    Restart Apache
 
     sudo service apache2 restart
 
 10) Install and configure PostgreSQL
 
-Install PostgreSQL:
+    Install PostgreSQL:
 
     sudo apt-get install postgresql postgresql-contrib python-psycopg2 libpq-dev
 
