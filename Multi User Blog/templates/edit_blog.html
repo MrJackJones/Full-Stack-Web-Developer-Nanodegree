@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block header %}
+{% if access_error %}
+  <div></div>
+{% else %}
+<div class="header">
+  <h1>Edit post</h1>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+
+{% if access_error %}
+  <div class="active alert alert-danger">{{access_error}}</div>
+{% else %}
+
+{% if error %}
+  <div class="active alert alert-danger">{{error}}</div>
+{% endif %}
+
+<div class="container height-adjust">
+  <div class="row">
+    <form id="add-blog-form" role="form" method='post' action="/blog/edit/{{post.key().id()}}">
+      <div class="row">
+        <label class="col-md-2">Title*</label>
+        <input required id="title" name="title" type="text" class="col-md-10" value="{{post.title}}">
+      </div>
+      <div class="row">
+        <label class="col-md-12">Content*</label><br>
+        <div class="row">
+          <textarea required id="content" name="content" rows="15" class="col-md-12">
+          {{post.content}}
+          </textarea>
+        </div>
+      </div>
+      <div>
+        <label class="col-md-12"></label>  
+        <div class="row">
+          <br>
+          <div class="col-md-6">
+            <button type="submit" class="btn btn-md btn-success">
+              <i class="fa fa-check"></i>&nbsp;Confirm edit
+            </button>
+          </div>
+          <div class="col-md-6">
+            <a href='/' class="btn btn-md btn-danger">
+              <i class="fa fa-times"></i>&nbsp;Cancel
+            </a>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endif %}
+{% endblock %}
+

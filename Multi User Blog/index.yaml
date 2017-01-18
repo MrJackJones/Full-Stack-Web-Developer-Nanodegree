@@ -1,0 +1,7 @@
+indexes:
+
+- kind: Post
+  properties:
+  - name: is_draft
+  - name: created_at
+    direction: desc

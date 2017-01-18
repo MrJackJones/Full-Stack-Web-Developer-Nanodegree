@@ -1,0 +1,72 @@
+.headers {
+    font-size: 42px;
+    font-weight: 900;
+    color: #333333;
+}
+
+.height-adjust{
+    margin-top: 4%;
+}
+
+.signup-container {
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 0 2px 6px 0 rgba(0,0,0,.44);
+    padding: 0;
+    max-width: 40%;
+}
+
+.post-title { 
+	font-weight: 700;
+    font-style: normal;
+    font-size: 36px;
+    line-height: 1.15;
+    letter-spacing: -.02em;
+}
+
+.pre {
+    font-weight: 400;
+    font-style: normal;
+    font-size: 21px;
+    line-height: 1.58;
+    letter-spacing: -.003em;
+}
+
+.post-date {
+    font-size: 16px;
+    font-weight: 600;
+    color: #999;
+    margin-top: 1.5%;
+}
+
+.top-clear{
+    margin-top: 10%;
+}
+
+.post-headers {
+    margin-left: -2%;
+}
+
+.comment-text {
+    margin: 2%;
+    font-size: 16px;
+}
+
+.comment-user {
+   color: rgb(182, 74, 43);
+   line-height: 19.6px;
+   font-weight: 600;
+   font-size: 16px;
+}
+
+.response {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    margin: 2%;
+}
+
+pre {
+    word-wrap: break-word;
+}

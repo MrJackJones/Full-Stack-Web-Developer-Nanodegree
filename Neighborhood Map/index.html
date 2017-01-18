@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Neighborhood</title>
+    <!-- Material Design fonts -->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+    <!-- Bootstrap Material Design -->
+    <link rel="stylesheet" type="text/css" href="css/dist/css/bootstrap-material-design.css">
+    <link rel="stylesheet" type="text/css" href="css/dist/css/ripples.min.css">
+
+
+    <!--<link href="css/sidebar.css" rel="stylesheet">-->
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<body clas="container">
+  <div class="row">
+    <div id = "map">
+    </div>
+    <div class="col-md-12">
+      <div class="col-md-3 div-config">
+        <h3>Filter</h3>
+        <input type="search" class="form-control" data-bind="textInput: query" autocomplete="off" />
+        <h3>Locations</h3>
+        <select data-bind="foreach: filteredLocations, value:selectedItem" size="5" id="location_list">
+          <option data-bind="text: name, click: $parent.onClick"></option>
+        </select>
+        <h5 class="error-msg" data-bind="text: errorMsg"></h5>
+      </div>
+      <div class="col-md-3 div-config col-md-push-5">
+        <table data-bind="with: currentLoc">
+          <tr>
+            <td> <h4 data-bind="text: name"> </h4></td>
+          </tr>
+          <tr>
+            <td>
+              <img src="" alt="rating star image" data-bind="attr: {src: ratingImageUrl}">
+              (<span data-bind="text: reviewCount"> </span>) <br>
+              <img src="" alt="location image" data-bind="attr: {src: imageUrl}">
+              <p class="review" data-bind="text: snippet"> </p>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/oauth-signature-js-master/dist/oauth-signature.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="js/libs/knockout-3.2.0.js"></script>
+  <script src="js/map.js"></script>
+
+  <script>
+    $.getScript( "https://maps.googleapis.com/maps/api/js?key=AIzaSyAxssFh-aC4nbjUWd5vz83FHhDnDjwucuA&callback=initMap" )
+      .done(function( script, textStatus ) {
+        return
+      })
+      .fail(function( jqxhr, settings, exception ) {
+        window.location = "error.html";
+        return 
+    });
+  </script>
+  <script>
+    $("#menu-toggle").click(function(e){
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
+</body>
+</html>
