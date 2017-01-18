@@ -1,10 +1,10 @@
-Linux Server Configuration
+<h1>Linux Server Configuration</h1>
 
 Installed and configured all required software to turn a baseline Ubuntu Amazon Web Services server into a fully functional web application server, including Apache Web Server and PostgreSQL database server.
 
-Skills: SSH, Linux, Apache, PostgreSQL
+<b>Skills:</b> SSH, Linux, Apache, PostgreSQL
 
-Setup Project:
+<h2>Setup Project:</h2>
 
 1) Create a new user named grader
 

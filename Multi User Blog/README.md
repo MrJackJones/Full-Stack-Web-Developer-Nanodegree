@@ -1,10 +1,10 @@
-Multi User Blog
+<h1>Multi User Blog</h1>
 
 Built a multi-user blog, hosted on Google App Engine, with comments and login functionality.
 
-Skills: Python, Google App, Engine HTML
+<b>Skills:</b> Python, Google App, Engine HTML
 
-Setup Project:
+<h2>Setup Project:</h2>
 
 1. Install Python if necessary.
     https://www.python.org/downloads/
