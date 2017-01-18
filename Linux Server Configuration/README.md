@@ -33,11 +33,11 @@ Installed and configured all required software to turn a baseline Ubuntu Amazon 
 
 5) Allow user to login through ssh as grader with the same private key that can be used to login as root:
 
-   su grader
-   mkdir ~/.ssh
-   chmod 777 ~/.ssh
-   sudo cp /root/.ssh/authorized_keys ~/.ssh/
-   sudo chown grader:grader ~/.ssh/authorized_keys
+       su grader
+       mkdir ~/.ssh
+       chmod 777 ~/.ssh
+       sudo cp /root/.ssh/authorized_keys ~/.ssh/
+       sudo chown grader:grader ~/.ssh/authorized_keys
 
 
 
@@ -216,4 +216,4 @@ Installed and configured all required software to turn a baseline Ubuntu Amazon 
 
     sudo service apache2 restart
 
-27) Navigate to localhost:5555 in your browser
+27) Navigate to SERVER_IP:5555 in your browser
