@@ -1,10 +1,11 @@
-Tournament Results
+<h1>Tournament Results</h1>
 
 Built a PostgreSQL relational database scheme to store the results of a game tournament. Also provided a number of queries to efficiently report the results of the tournament and determine the winner.
 
 Skills: SQL, PostgreSQL, relational databases
+<hr>
 
-Setup Project:
+<h2>Setup Project:</h2>
 
 1. Launch the Vagrant VM
 
@@ -22,7 +23,7 @@ Setup Project:
 6. Test the application using following command - python tournament_test.py
 
 
-Result:
+<h2>Result:</h2>
 
 1. countPlayers() returns 0 after initial deletePlayers() execution.
 2. countPlayers() returns 1 after one player is registered.
