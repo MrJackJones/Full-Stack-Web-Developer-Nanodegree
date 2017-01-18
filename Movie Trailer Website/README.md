@@ -8,6 +8,6 @@ Server-side code written in Python to store a list of my favorite movies, includ
 
 1. Execute:
 
-	python movie.py
+		python movie.py
 
 2. Open fresh_tomatoes.html file in your browser
