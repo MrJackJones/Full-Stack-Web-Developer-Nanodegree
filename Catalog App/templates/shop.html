@@ -1,0 +1,50 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+<div class="row top-menu">
+		<div class="col-md-10"></div>
+		<div class="col-md-2 text-right">
+	</div>
+<div class="row banner menu">
+	<div class="col-md-11 col-md-offset-1 padding-none text-center">
+		<h1>All Shops</h1>
+	</div>
+</div>
+
+<div class = 'flash'>
+		      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+          
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
+</div>
+	
+	<div class="row padding-top padding-bottom">
+		<div class="col-md-1"></div>
+		<div class="col-md-2 padding-none">
+			<a href="{{url_for('newShop')}}">
+				<button class="btn btn-default" id="new-shop">
+					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add Shop
+				</button>
+			</a>
+		</div>
+	<div class="col-md-1"></div>
+	</div>
+	{% for shop in shop %}
+		<a href = "{{url_for('showMenu', shop_id = shop.id)}}">
+			<div class="row">
+				<div class="col-md-1"></div>
+					<div class="col-md-10 shop-list">
+						<h3>{{shop.name}}</h3>
+					</div>
+				<div class="col-md-1"></div>
+			</div>
+		</a>
+	{% endfor %}
+{% endblock %}

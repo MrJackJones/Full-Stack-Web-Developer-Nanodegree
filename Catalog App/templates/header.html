@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Header</title>
+</head>
+<body>
+<header class="row top-menu">
+	<div class="row banner main">
+		<div class="col-md-1"></div>
+		<div class="col-md-11 padding-none">
+		</div>
+	</div>
+    <div class="col-md-12">
+        <a href="{{url_for('showShop')}}">
+            <button class="btn btn-default" align="center">
+            <span class="glyphicon glyphicon-home" aria-hidden="true"></span>Show All Shops
+			</button>
+        </a>
+        {%if 'username' not in session %}
+			<a href="{{url_for('showLogin')}}">
+            <button class="btn btn-default" align="center">
+            <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>Click Here to Login
+			</button>
+            </a>
+			{% else %}
+			<a href="{{url_for('gdisconnect')}}">
+            <button class="btn btn-default" align="center">
+            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>Logout
+			</button>
+            </a>
+        {% endif %}
+    </div>
+</header>
+
+</body>
+</html>

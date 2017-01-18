@@ -1,0 +1,64 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+<div class="row banner menu">
+	<div class="col-md-11 col-md-offset-1 padding-none text-center">
+		<h1>{{ shop.name }}
+	</div>
+</div>
+
+<div class = 'flash'>
+	{% with messages = get_flashed_messages() %}
+	{% if messages %}
+	<ul>
+	{% for message in messages %}
+	<li> <strong> {{ message }} </strong> </li>
+	{% endfor %}
+	</ul>
+	{% endif %}
+	{% endwith %}
+</div>
+
+
+<div class="row padding-top padding-bottom">
+	<div class="col-md-1"></div>
+		<div class="col-md-11 padding-none">
+			<a href="{{url_for('editShop', shop_id = shop.id )}}">
+				<button class="btn btn-default" id="new-menu-item">
+				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Edit Shop
+				</button>
+			</a>
+			<a href="{{url_for('newMenuItem', shop_id = shop.id )}}">
+				<button class="btn btn-default" id="new-menu-item">
+				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add Menu Item
+				</button>
+			</a>
+				<a href="{{url_for('deleteShop', shop_id = shop.id )}}">
+				<button class="btn btn-default delete" id="delete-shop">
+				<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Delete Shop
+				</button>
+			</a>
+		</div>
+	<div class="col-md-7"></div>
+</div>
+	
+{% if items !=[] %}
+
+{% for i in items %}
+<div class="row">
+	<div class="col-md-3 ">
+		<div class="gallery">
+		<img src="{{ url_for('static', filename=i.image)}}" width="200" height="200">
+		</div>
+	</div>
+	<div class="col-md-8">
+		<h3>{{i.name}}</h3>
+		<p>{{i.description}}</p>
+		<p class="menu-price">{{i.price}}</p>
+		<a href='{{url_for('editMenuItem', shop_id = shop.id, menu_id=i.id ) }}'>Edit</a> |
+		<a href='{{url_for('deleteMenuItem', shop_id = shop.id, menu_id=i.id ) }}'>Delete</a>
+	</div>
+</div>
+{% endfor %}
+{% endif %}
+{% endblock %}
