@@ -10,5 +10,5 @@
 6. Neighborhood Map
 7. Linux Server Configuration
 
-<h2>Certificate:</h2>
+##Certificate:
 ![Screenshot](certificate.jpg)
