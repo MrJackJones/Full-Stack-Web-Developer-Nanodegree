@@ -13,7 +13,7 @@ Installed and configured all required software to turn a baseline Ubuntu Amazon 
 2) Give the grader the permission to sudo
 
     visudo
-    grader ALL=(ALL:ALL) ALL
+    ubuntu ALL=(ALL:ALL) ALL
 
 3) Update all currently installed packages
 
