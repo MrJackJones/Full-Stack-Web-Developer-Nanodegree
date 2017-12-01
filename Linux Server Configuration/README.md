@@ -8,7 +8,7 @@ Installed and configured all required software to turn a baseline Ubuntu Amazon 
 
 1) Create a new user named grader
 
-    adduser grader
+    adduser ubuntu
 
 2) Give the grader the permission to sudo
 
