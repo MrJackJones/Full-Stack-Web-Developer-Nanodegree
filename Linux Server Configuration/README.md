@@ -7,97 +7,98 @@ Installed and configured all required software to turn a baseline Ubuntu Amazon 
 <h2>Setup Project:</h2>
 
 1) Create a new user named grader
-
-    adduser ubuntu
-
+```
+	adduser ubuntu
+```
 2) Give the grader the permission to sudo
-
-    visudo
-    ubuntu ALL=(ALL:ALL) ALL
-
+```
+	visudo  
+	ubuntu ALL=(ALL:ALL) ALL
+```
 3) Update all currently installed packages
-
-    sudo apt-get update
-    sudo apt-get upgrade
-    sudo apt-get dist-upgrade
-
+```
+	sudo apt-get update
+	sudo apt-get upgrade
+	sudo apt-get dist-upgrade
+```
 4) Change the SSH port from 22 to 2200
-
-    nano /etc/ssh/sshd_config
-    Change Port from 22 to 2200
-    Change PermitRootLogin from without-password to no
-    Change PasswordAuthentication from no to yes
-
-    Restart SSH Service:
-    /etc/init.d/ssh restart
-
+```
+	nano /etc/ssh/sshd_config
+	Change Port from 22 to 2200
+	Change PermitRootLogin from without-password to no
+	Change PasswordAuthentication from no to yes
+```
+	Restart SSH Service:
+```
+	/etc/init.d/ssh restart
+```
 5) Allow user to login through ssh as grader with the same private key that can be used to login as root:
-
-       su grader
-       mkdir ~/.ssh
-       chmod 777 ~/.ssh
-       sudo cp /root/.ssh/authorized_keys ~/.ssh/
-       sudo chown grader:grader ~/.ssh/authorized_keys
-
-
+```
+	su ubuntu
+	mkdir /home/ubuntu/.ssh
+	chmod 700 /home/ubuntu/.ssh
+	chmod 644 /home/ubuntu/.ssh/authorized_keys
+	sudo cp ~/.ssh/authorized_keys /home/ubuntu/.ssh/
+	sudo chown ubuntu:ubuntu /home/ubuntu/.ssh/authorized_keys
+```
 
 6) Configure the Uncomplicated Firewall (UFW) to only allow incoming connections for SSH (port 2200), HTTP (port 80), and NTP (port 123)
+```
+	Allow incoming TCP packets on port 2200 (SSH) $ sudo ufw allow 2200/tcp
+	Allow incoming TCP packets on port 80 (HTTP)
+	Allow incoming UDP packets on port 123 (NTP)
 
-    Allow incoming TCP packets on port 2200 (SSH) $ sudo ufw allow 2200/tcp
-    Allow incoming TCP packets on port 80 (HTTP)
-    Allow incoming UDP packets on port 123 (NTP)
-
-    sudo ufw enable
-    sudo ufw allow 80/tcp
-    sudo ufw allow 123/udp
-    sudo ufw allow 2200/tcp
-
+	sudo ufw enable
+	sudo ufw allow 80/tcp
+	sudo ufw allow 123/udp
+	sudo ufw allow 2200/tcp
+```
 
 7) Configure the local timezone to UTC
 
     Type the below command and select the required time zone.
-
-    sudo dpkg-reconfigure tzdata
-
+```
+	sudo dpkg-reconfigure tzdata
+```
 8) Reboot system
-
-    sudo reboot
-
+```
+	sudo reboot
+```
 9) Install and configure Apache to serve a Python mod_wsgi application
 
     Install Apache
-
-    sudo apt-get install apache2
-
+```
+	sudo apt-get install apache2
+```
     Install mod_wsgi
-
-    sudo apt-get install python-setuptools libapache2-mod-wsgi
-
+```
+	sudo apt-get install python-setuptools libapache2-mod-wsgi
+```
     Restart Apache
-
-    sudo service apache2 restart
-
+```
+	sudo service apache2 restart
+```
 10) Install and configure PostgreSQL
 
     Install PostgreSQL:
-
-    sudo apt-get install postgresql postgresql-contrib python-psycopg2 libpq-dev
-
+```
+	sudo apt-get install postgresql postgresql-contrib python-psycopg2 libpq-dev
+```
 11) Install pip3 and use python 3 defult:
-
-    alias python=/usr/bin/python3
-    sudo apt-get install python-pip
-    
+```
+	alias python=/usr/bin/python3
+ 	sudo apt-get install python-pip
+ ```   
 
 12) Check that no remote connections are allowed (default):
-
-    sudo nano /etc/postgresql/9.3/main/pg_hba.conf
-
+```
+	sudo nano /etc/postgresql/9.3/main/pg_hba.conf
+```
 
 13) Create needed linux user for psql 
-    
-    sudo adduser catalog
-
+```    
+	sudo adduser catalog
+```
 14) Change to default user postgres sudo su - postgre
     
     sudo -u postgres -i
