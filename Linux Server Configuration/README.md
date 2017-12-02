@@ -34,24 +34,19 @@ Restart SSH Service:
 ```
 5) Allow user to login through ssh as grader with the same private key that can be used to login as root:
 ```
-	su ubuntu
 	mkdir /home/ubuntu/.ssh
+	sudo cp ~/.ssh/authorized_keys /home/ubuntu/.ssh/
 	chmod 700 /home/ubuntu/.ssh
 	chmod 644 /home/ubuntu/.ssh/authorized_keys
-	sudo cp ~/.ssh/authorized_keys /home/ubuntu/.ssh/
-	sudo chown ubuntu:ubuntu /home/ubuntu/.ssh/authorized_keys
+	sudo chown -R ubuntu:ubuntu /home/ubuntu/.ssh
 ```
 
-6) Configure the Uncomplicated Firewall (UFW) to only allow incoming connections for SSH (port 2200), HTTP (port 80), and NTP (port 123)
+6) Configure the Uncomplicated Firewall (UFW) to only allow incoming connections for SSH (port 2200), HTTP (port 80), and HTTPS (port 443)
 ```
-	Allow incoming TCP packets on port 2200 (SSH) $ sudo ufw allow 2200/tcp
-	Allow incoming TCP packets on port 80 (HTTP)
-	Allow incoming UDP packets on port 123 (NTP)
-
-	sudo ufw enable
 	sudo ufw allow 80/tcp
-	sudo ufw allow 123/udp
+	sudo ufw allow 443/tcp
 	sudo ufw allow 2200/tcp
+	sudo ufw enable
 ```
 
 7) Configure the local timezone to UTC
