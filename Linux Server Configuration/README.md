@@ -27,8 +27,8 @@ Installed and configured all required software to turn a baseline Ubuntu Amazon 
 	Change Port from 22 to 2200
 	Change PermitRootLogin from without-password to no
 	Change PasswordAuthentication from no to yes
-```
-	Restart SSH Service:
+```	
+Restart SSH Service:
 ```
 	/etc/init.d/ssh restart
 ```
