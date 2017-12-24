@@ -91,65 +91,64 @@ Restart SSH Service:
 ```
 	sudo apt-get install postgresql postgresql-contrib python-psycopg2 libpq-dev
 ```
-11) Install pip3 and use python 3 defult:
+12) Install pip3 and use python 3 defult:
 ```
 	alias python=/usr/bin/python3
  	sudo apt-get install python-pip
  ```   
 
-12) Check that no remote connections are allowed (default):
+13) Check that no remote connections are allowed (default):
 ```
 	sudo nano /etc/postgresql/9.3/main/pg_hba.conf
 ```
 
-13) Create needed linux user for psql 
+14) Create needed linux user for psql 
 ```    
 	sudo adduser catalog
 ```
-14) Change to default user postgres sudo su - postgre
-    
+15) Change to default user postgres sudo su - postgre
+```   
     sudo -u postgres -i
-
+```
+```
     Connect:
-
     psql
-    
+```
     Add postgres user and allw user to create database:
-
+```
     CREATE USER catalog WITH PASSWORD 'PWD';
     ALTER USER catalog CREATEDB;
-
+```
     Create database:
-    
+```    
     CREATE DATABASE catalog WITH OWNER catalog;
-
-    Connect to the database catalog 
-
+```
+    Connect to the database catalog: 
+```
     \c catalog
-
+```
     Revoke all rights:
-
+```
     REVOKE ALL ON SCHEMA public FROM public;
 
     Grant only access to the catalog role:
 
     GRANT ALL ON SCHEMA public TO catalog;
-
+```
     Exit out of PostgreSQl and the postgres user:
-
+```
     \q
-    exit
-
-15) install git
+```
+16) install git
 ```
     sudo apt-get install git 
 ```
-16) Download CARALOG project from GitHub
+17) Download CARALOG project from GitHub
 ```
     cd
     sudo git clone https://github.com/MrJackJones/Shop_catalog.git
 ```
-17) move site file to /
+18) move site file to /
 ```
     cd /var/www 
     sudo mkdir FlaskAppv
@@ -158,32 +157,32 @@ Restart SSH Service:
     cd FlaskApp
     cp -r ~/Shop_catalog/* .
 ```
-18) change DB in database_setup.py, finalproject, lotsofmenus.py
+19) change DB in database_setup.py, finalproject, lotsofmenus.py
 ```
     postgresql://catalog:PWD@localhost/catalog
 ```
-19) rename finalproject.py 
+20) rename finalproject.py 
 ```
     sudo mv finalproject.py __init__.py
 ```
-20) edit path on file __init__.py for client_secrets.json
+21) edit path on file __init__.py for client_secrets.json
 ```
     /var/www/FlaskApp/FlaskApp/client_secrets.json
 ```
-21) Inastall all package from requirements.txt, use:
+22) Inastall all package from requirements.txt, use:
 ```
     sudo pip install -r requirements.txt
 ```
-22) run database_setup.py to create the database:
+23) run database_setup.py to create the database:
 ```
     sudo python database_setup.py
 ```
-23) run lotsofmenus.py to populate the database:
+24) run lotsofmenus.py to populate the database:
 ```
     sudo python lotsofmenus.py
 ```
-24) Configure and Enable a New Virtual Host
- ```   
+25) Configure and Enable a New Virtual Host
+```   
     sudo nano /etc/apache2/sites-available/FlaskApp.conf
 ```
 ```
@@ -208,7 +207,7 @@ Restart SSH Service:
 ```
     sudo a2ensite FlaskApp
 ```
-25) Create the .wsgi File
+26) Create the .wsgi File
 ```
     cd /var/www/FlaskApp
     sudo nano flaskapp.wsgi 
@@ -222,8 +221,8 @@ Restart SSH Service:
     from FlaskApp import app as application
     application.secret_key = 'super_secret_key'
 ```
-26) Restart Apache
+27) Restart Apache
 ```
     sudo service apache2 restart
 ```
-27) Navigate to SERVER_IP:5555 in your browser
+28) Navigate to SERVER_IP:5555 in your browser
