@@ -1,6 +1,6 @@
-#Full Stack Web Developer Nanodegree
+# Full Stack Web Developer Nanodegree
 
-<b>Project:</b>
+**Project:**
 
 1. Movie Trailer Website
 2. Build a Portfolio Site
@@ -10,5 +10,5 @@
 6. Neighborhood Map
 7. Linux Server Configuration
 
-##Certificate:
+## Certificate:
 ![Screenshot](certificate.jpg)
