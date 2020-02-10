@@ -131,4 +131,3 @@ sudo apt-get install python-pip
 ```bash
 pg_dump -U [USER_NAME] [DB_NAME]  -f [BACKUP_NAME].dump
 ```
-2. 
