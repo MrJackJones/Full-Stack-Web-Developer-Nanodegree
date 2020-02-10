@@ -4,7 +4,7 @@ Installed and configured all required software to turn a baseline Ubuntu Amazon 
 
 <b>Skills:</b> SSH, Linux, Apache, PostgreSQL
 
-##Setup Project:
+## Setup Project:
 
 1) Create a new user named grader
 ```bash
