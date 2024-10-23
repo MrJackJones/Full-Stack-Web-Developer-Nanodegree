@@ -15,6 +15,11 @@ adduser ubuntu
 visudo  
 ubuntu ALL=(ALL:ALL) ALL
 ```
+or
+```bash
+sudo usermod -aG sudo ubuntu
+```
+
 3) Update all currently installed packages
 ```bash
 sudo apt-get update
@@ -23,7 +28,9 @@ sudo apt-get dist-upgrade
 ```
 4) Change the SSH port from 22 to 2200
 ```bash
-
+sudo vim /etc/ssh/sshd_config
+```
+```bash
 Change Port from 22 to 2200
 Change PermitRootLogin from without-password to no
 Change PasswordAuthentication from yes to no
@@ -50,25 +57,56 @@ sudo ufw status
 sudo ufw enable
 ```
 
-7) Configure the local timezone to UTC
-
-    Type the below command and select the required time zone.
+7) Configure the local timezone to UTC.
 ```bash
 sudo dpkg-reconfigure tzdata
 ```
-8) Reboot system
+8) Setup unattended-upgrades
+```bash
+sudo apt install unattended-upgrades
+```
+```bash
+systemctl status unattended-upgrades
+```
+9) Setup fail2ban
+```bash
+sudo apt install fail2ban
+```
+```bash
+sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+sudo vi /etc/fail2ban/jail.local
+```
+```bash
+[sshd]
+
+enabled = true
+mode = aggressive
+port    = ssh
+logpath = /var/log/auth.log
+backend = %(sshd_backend)s
+```
+```bash
+sudo touch /var/log/auth.log
+```
+```bash
+sudo systemctl enable fail2ban
+sudo systemctl restart fail2ban
+sudo systemctl status fail2ban
+```
+
+10) Reboot system
 ```bash
 sudo reboot
 ```
-9) Install and configure Niginx 
+11) Install and configure Niginx 
 ```bash
 sudo apt-get install nginx
 ```
-10) Add policy to ufw.
+12) Add policy to ufw.
 ```bash
 sudo ufw allow 'Nginx Full'
 ```
-11) Install LetsenCrypt Certbot
+13) Install LetsenCrypt Certbot
 ```bash
 sudo add-apt-repository ppa:certbot/certbot
 sudo apt-get update
@@ -76,16 +114,16 @@ sudo apt-get install python-certbot-nginx
 sudo certbot --nginx -d [SITE]
 sudo certbot renew --dry-run
 ```
-12) Enable site
+14) Enable site
 ```bash
 ln -s /etc/nginx/sites-available/communication.levellab.ru /etc/nginx/sites-enabled/
 nginx -t
 ```
-13) Install and configure PostgreSQL.
+15) Install and configure PostgreSQL.
 ```bash
 sudo apt-get install postgresql postgresql-contrib python-psycopg2 libpq-dev
 ```
-14) Configure PostgreSQL.
+16) Configure PostgreSQL.
 ```bash
 su - postgres
 createdb [DB_NAME]
@@ -102,25 +140,25 @@ Restart the server
 ```bash
 sudo service postgresql restart
 ```
-15) Restore PostgreSQL backup:
+17) Restore PostgreSQL backup:
 ```bash
 psql [DB_NAME] [USER_NAME] < [BACKUP_NAME].dump
 ```
-16) Install git
+18) Install git
 ```bash
 sudo apt-get install git 
 ```
-17) Install and configure Niginx to serve a Python mod_wsgi application
+19) Install and configure Niginx to serve a Python mod_wsgi application
 ```bash
 sudo apt-get install python-setuptools libapache2-mod-wsgi
 sudo service nginx restart
 ```
 
-18) Install lib for PostgreSQL
+20) Install lib for PostgreSQL
 ```bash
 sudo apt-get install postgresql-contrib python-psycopg2 libpq-dev
 ```
-19) Install pip3 and use python 3 defult:
+21) Install pip3 and use python 3 defult:
 ```bash
 alias python=/usr/bin/python3
 sudo apt-get install python-pip
