@@ -98,15 +98,18 @@ sudo systemctl status fail2ban
 ```bash
 sudo reboot
 ```
-11) Install and configure Niginx 
+
+## Other Software Setup:
+
+1) Install and configure Niginx 
 ```bash
 sudo apt-get install nginx
 ```
-12) Add policy to ufw.
+2) Add policy to ufw.
 ```bash
 sudo ufw allow 'Nginx Full'
 ```
-13) Install LetsenCrypt Certbot
+3) Install LetsenCrypt Certbot
 ```bash
 sudo add-apt-repository ppa:certbot/certbot
 sudo apt-get update
@@ -114,16 +117,16 @@ sudo apt-get install python-certbot-nginx
 sudo certbot --nginx -d [SITE]
 sudo certbot renew --dry-run
 ```
-14) Enable site
+4) Enable site
 ```bash
 ln -s /etc/nginx/sites-available/communication.levellab.ru /etc/nginx/sites-enabled/
 nginx -t
 ```
-15) Install and configure PostgreSQL.
+5) Install and configure PostgreSQL.
 ```bash
 sudo apt-get install postgresql postgresql-contrib python-psycopg2 libpq-dev
 ```
-16) Configure PostgreSQL.
+6) Configure PostgreSQL.
 ```bash
 su - postgres
 createdb [DB_NAME]
@@ -140,25 +143,25 @@ Restart the server
 ```bash
 sudo service postgresql restart
 ```
-17) Restore PostgreSQL backup:
+7) Restore PostgreSQL backup:
 ```bash
 psql [DB_NAME] [USER_NAME] < [BACKUP_NAME].dump
 ```
-18) Install git
+8) Install git
 ```bash
 sudo apt-get install git 
 ```
-19) Install and configure Niginx to serve a Python mod_wsgi application
+9) Install and configure Niginx to serve a Python mod_wsgi application
 ```bash
 sudo apt-get install python-setuptools libapache2-mod-wsgi
 sudo service nginx restart
 ```
 
-20) Install lib for PostgreSQL
+10) Install lib for PostgreSQL
 ```bash
 sudo apt-get install postgresql-contrib python-psycopg2 libpq-dev
 ```
-21) Install pip3 and use python 3 defult:
+11) Install pip3 and use python 3 defult:
 ```bash
 alias python=/usr/bin/python3
 sudo apt-get install python-pip
