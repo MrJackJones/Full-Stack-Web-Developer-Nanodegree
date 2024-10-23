@@ -35,10 +35,6 @@ Change Port from 22 to 2200
 Change PermitRootLogin from without-password to no
 Change PasswordAuthentication from yes to no
 ```
-Restart SSH Service:
-```bash
-/etc/init.d/ssh restart
-```
 5) Allow user to login through ssh as grader with the same private key that can be used to login as root:
 ```bash
 mkdir /home/ubuntu/.ssh
@@ -47,7 +43,10 @@ chmod 700 /home/ubuntu/.ssh
 chmod 644 /home/ubuntu/.ssh/authorized_keys
 sudo chown -R ubuntu:ubuntu /home/ubuntu/.ssh
 ```
-
+Restart SSH Service:
+```bash
+/etc/init.d/ssh restart
+```
 6) Configure the Uncomplicated Firewall (UFW) to only allow incoming connections for SSH (port 2200), HTTP (port 80), and HTTPS (port 443)
 ```bash
 sudo ufw allow 80/tcp
