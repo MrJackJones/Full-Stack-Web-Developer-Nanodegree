@@ -74,6 +74,11 @@ sudo apt install fail2ban
 ```
 ```bash
 sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+```
+```bash
+sudo journalctl -u ssh
+```
+```bash
 sudo vi /etc/fail2ban/jail.local
 ```
 ```bash
@@ -82,16 +87,17 @@ sudo vi /etc/fail2ban/jail.local
 enabled = true
 mode = aggressive
 port    = ssh
-logpath = /var/log/auth.log
-backend = %(sshd_backend)s
-```
-```bash
-sudo touch /var/log/auth.log
+logpath = %(sshd_log)s
+backend = systemd
 ```
 ```bash
 sudo systemctl enable fail2ban
 sudo systemctl restart fail2ban
 sudo systemctl status fail2ban
+```
+```bash
+sudo tail -f /var/log/fail2ban.log
+sudo fail2ban-client status sshd
 ```
 
 10) Reboot system
