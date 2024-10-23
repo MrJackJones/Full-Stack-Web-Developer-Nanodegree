@@ -42,6 +42,7 @@ sudo cp ~/.ssh/authorized_keys /home/ubuntu/.ssh/
 chmod 700 /home/ubuntu/.ssh
 chmod 644 /home/ubuntu/.ssh/authorized_keys
 sudo chown -R ubuntu:ubuntu /home/ubuntu/.ssh
+rm /root/.ssh/authorized_keys
 ```
 Restart SSH Service:
 ```bash
