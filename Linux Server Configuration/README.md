@@ -6,11 +6,11 @@ Installed and configured all required software to turn a baseline Ubuntu Amazon 
 
 ## Setup Project:
 
-1) Create a new user named grader
+1) Create a new user
 ```bash
 adduser ubuntu
 ```
-2) Give the grader the permission to sudo
+2) Give the permission to sudo
 ```bash
 usermod -aG sudo ubuntu
 ```
@@ -26,16 +26,17 @@ apt-get dist-upgrade
 vim /etc/ssh/sshd_config
 ```
 ```bash
-Change Port from 22 to 2200
-Change PermitRootLogin from without-password to no
-Change PasswordAuthentication from yes to no
+Port 2200
+PermitRootLogin no
+PasswordAuthentication no
+AllowUsers ubuntu
 ```
-5) Allow user to login through ssh as grader with the same private key that can be used to login as root:
+5) Allow user to login through ssh with the same private key that can be used to login as root:
 ```bash
 mkdir /home/ubuntu/.ssh
 cp ~/.ssh/authorized_keys /home/ubuntu/.ssh/
 chmod 700 /home/ubuntu/.ssh
-chmod 644 /home/ubuntu/.ssh/authorized_keys
+chmod 600 /home/ubuntu/.ssh/authorized_keys
 chown -R ubuntu:ubuntu /home/ubuntu/.ssh
 rm /root/.ssh/authorized_keys
 ```
@@ -81,7 +82,7 @@ vi /etc/fail2ban/jail.local
 
 enabled = true
 mode = aggressive
-port    = ssh
+port = 2200
 logpath = %(sshd_log)s
 backend = systemd
 ```
