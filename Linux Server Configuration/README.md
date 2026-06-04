@@ -23,7 +23,6 @@ vim /etc/ssh/sshd_config
 Port 2200
 PermitRootLogin no
 PasswordAuthentication no
-AllowUsers ubuntu
 ```
 5) Allow user to login through ssh with the same private key that can be used to login as root:
 ```bash
@@ -75,7 +74,7 @@ vi /etc/fail2ban/jail.local
 [sshd]
 
 enabled = true
-mode = aggressive
+mode = normal
 port = 2200
 logpath = %(sshd_log)s
 backend = systemd
