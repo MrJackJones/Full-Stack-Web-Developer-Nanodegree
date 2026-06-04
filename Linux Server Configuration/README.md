@@ -57,6 +57,9 @@ apt install unattended-upgrades
 ```bash
 systemctl status unattended-upgrades
 ```
+```bash
+dpkg-reconfigure -plow unattended-upgrades
+```
 9) Setup fail2ban
 ```bash
 apt install fail2ban
