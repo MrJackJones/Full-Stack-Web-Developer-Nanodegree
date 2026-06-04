@@ -79,7 +79,6 @@ vi /etc/fail2ban/jail.local
 enabled = true
 mode = normal
 port = 2200
-logpath = %(sshd_log)s
 backend = systemd
 ```
 ```bash
