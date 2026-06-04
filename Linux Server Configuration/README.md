@@ -26,7 +26,7 @@ PasswordAuthentication no
 ```
 5) Allow user to login through ssh with the same private key that can be used to login as root:
 ```bash
-mkdir /home/ubuntu/.ssh
+mkdir -p /home/ubuntu/.ssh
 cp ~/.ssh/authorized_keys /home/ubuntu/.ssh/
 chmod 700 /home/ubuntu/.ssh
 chmod 600 /home/ubuntu/.ssh/authorized_keys
