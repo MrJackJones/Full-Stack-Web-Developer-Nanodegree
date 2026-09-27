@@ -11,9 +11,9 @@ usermod -aG sudo ubuntu
 
 3) Update all currently installed packages
 ```bash
-apt-get update
-apt-get -y upgrade
-apt-get -y dist-upgrade
+apt update
+apt -y upgrade
+apt -y dist-upgrade
 ```
 4) Change the SSH port from 22 to 2200
 ```bash
