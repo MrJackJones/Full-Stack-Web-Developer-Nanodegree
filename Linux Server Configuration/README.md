@@ -12,8 +12,8 @@ usermod -aG sudo ubuntu
 3) Update all currently installed packages
 ```bash
 apt-get update
-apt-get upgrade
-apt-get dist-upgrade
+apt-get -y upgrade
+apt-get -y dist-upgrade
 ```
 4) Change the SSH port from 22 to 2200
 ```bash
@@ -33,10 +33,6 @@ chmod 600 /home/ubuntu/.ssh/authorized_keys
 chown -R ubuntu:ubuntu /home/ubuntu/.ssh
 rm /root/.ssh/authorized_keys
 ```
-Restart SSH Service:
-```bash
-/etc/init.d/ssh restart
-```
 6) Configure the Uncomplicated Firewall (UFW) to only allow incoming connections for SSH (port 2200), HTTP (port 80), and HTTPS (port 443)
 ```bash
 ufw allow 80/tcp
@@ -55,10 +51,10 @@ dpkg-reconfigure tzdata
 apt install unattended-upgrades
 ```
 ```bash
-systemctl status unattended-upgrades
+dpkg-reconfigure -plow unattended-upgrades
 ```
 ```bash
-dpkg-reconfigure -plow unattended-upgrades
+systemctl status unattended-upgrades
 ```
 9) Setup fail2ban
 ```bash
@@ -68,14 +64,10 @@ apt install fail2ban
 cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
 ```
 ```bash
-journalctl -u ssh
-```
-```bash
-vi /etc/fail2ban/jail.local
+vim /etc/fail2ban/jail.local
 ```
 ```bash
 [sshd]
-
 enabled = true
 mode = normal
 port = 2200
@@ -85,10 +77,6 @@ backend = systemd
 systemctl enable fail2ban
 systemctl restart fail2ban
 systemctl status fail2ban
-```
-```bash
-tail -f /var/log/fail2ban.log
-fail2ban-client status sshd
 ```
 
 10) Reboot system
