@@ -15,22 +15,27 @@ apt update
 apt -y upgrade
 apt -y dist-upgrade
 ```
-4) Change the SSH port from 22 to 2200
-```bash
-vim /etc/ssh/sshd_config
-```
-```bash
-Port 2200
-PermitRootLogin no
-PasswordAuthentication no
-```
-5) Allow user to login through ssh with the same private key that can be used to login as root:
+4) Allow user to login through ssh with the same private key that can be used to login as root:
 ```bash
 mkdir -p /home/ubuntu/.ssh
-touch /home/ubuntu/.ssh/authorized_keys
+cp /root/.ssh/authorized_keys /home/ubuntu/.ssh/
 chmod 700 /home/ubuntu/.ssh
 chmod 600 /home/ubuntu/.ssh/authorized_keys
 chown -R ubuntu:ubuntu /home/ubuntu/.ssh
+```
+5) Change the SSH port from 22 to 2200
+```bash
+cat > /etc/ssh/sshd_config.d/00-hardening.conf <<'EOF'
+Port 2200
+PermitRootLogin no
+PasswordAuthentication no
+EOF
+```
+```bash
+sshd -t
+systemctl disable --now ssh.socket
+systemctl enable --now ssh.service
+systemctl restart ssh
 ```
 6) Configure the Uncomplicated Firewall (UFW) to only allow incoming connections for SSH (port 2200), HTTP (port 80), and HTTPS (port 443)
 ```bash
@@ -41,7 +46,7 @@ ufw status
 ufw enable
 ```
 
-7) Configure the local timezone to UTC.
+7) Configure the local timezone to Europe/Moscow.
 ```bash
 timedatectl set-timezone Europe/Moscow
 ```
