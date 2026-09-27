@@ -27,11 +27,10 @@ PasswordAuthentication no
 5) Allow user to login through ssh with the same private key that can be used to login as root:
 ```bash
 mkdir -p /home/ubuntu/.ssh
-cp ~/.ssh/authorized_keys /home/ubuntu/.ssh/
+touch /home/ubuntu/.ssh/authorized_keys
 chmod 700 /home/ubuntu/.ssh
 chmod 600 /home/ubuntu/.ssh/authorized_keys
 chown -R ubuntu:ubuntu /home/ubuntu/.ssh
-rm /root/.ssh/authorized_keys
 ```
 6) Configure the Uncomplicated Firewall (UFW) to only allow incoming connections for SSH (port 2200), HTTP (port 80), and HTTPS (port 443)
 ```bash
@@ -44,7 +43,7 @@ ufw enable
 
 7) Configure the local timezone to UTC.
 ```bash
-dpkg-reconfigure tzdata
+timedatectl set-timezone Europe/Moscow
 ```
 8) Setup unattended-upgrades
 ```bash
